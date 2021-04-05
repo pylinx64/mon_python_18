@@ -19,4 +19,3 @@ while True:
         
     else:
         sayBots('Я тебя не понимаю')
-    
