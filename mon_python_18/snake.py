@@ -12,6 +12,7 @@ screen.setup(650, 650)
 screen.title('Змейка 2077')
 # меняет цвет фона
 screen.bgcolor('#31F3FF')
+screen.tracer(0)
 #---------------------экран----------------------
 
 #--------------------змейка----------------------
@@ -19,8 +20,10 @@ snake=turtle.Turtle()
 snake.shape('square')
 snake.penup()
 
+
 # туловище
 snake_body = []
+snake_body.append(snake)
 #--------------------змейка----------------------
 
 #--------------------яблоко----------------------
@@ -55,11 +58,15 @@ while True:
         snake_body.append(snake_segment)
     
     # туловище едет за головой
+    for i in range(len(snake_body)-1, 0, -1):
+        x = snake_body[i-1].xcor()
+        y = snake_body[i-1].ycor()
+        snake_body[i].goto(x, y)
         
     # скорость змейки
-    snake.forward(5)
+    snake.forward(20)
     
     # обновление экрана
     screen.update()
     
-    time.sleep(0.01)
+    time.sleep(0.1)
